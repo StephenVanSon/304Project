@@ -131,7 +131,7 @@ insert into posting
 values(4, 20 , 'Back cover ripped out. Will sell for cheap', '0239482.jpg' , 9780323355636, 12345678);
 
 insert into posting
-values(5, 20, 'Great conditions! Send me a message if interested!', 'IMG4.jpg', 13579246);
+values(5, 20, 'Great conditions! Send me a message if interested!', 'IMG4.jpg', 9780262017350, 13579246);
 
 
 insert into sellers_sell_textbook
