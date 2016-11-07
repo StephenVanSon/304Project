@@ -119,19 +119,19 @@ values('Kochan', 9780321776419);
 
 
 insert into posting
-values(1, 50, 'Very good condition. Barely used.', 'posting.jpg', 'Y', 9780321776419, 12345678);
+values(1, 50, 'Very good condition. Barely used.', 'posting.jpg', 'N', 9780321776419, 12345678);
 
 insert into posting
-values(2, 30, 'Some water marks on the book. The rest is completely fine.', 'img1.jpg', 9780133571769, 97531246);
+values(2, 30, 'Some water marks on the book. The rest is completely fine.', 'img1.jpg', 'N', 9780133571769, 97531246);
 
 insert into posting
-values(3, 75, 'Brand new, opened one time', 'img_212.jpg', 9780133571769, 87654321);
+values(3, 75, 'Brand new, opened one time', 'img_212.jpg', 'N', 9780133571769, 87654321);
 
 insert into posting
-values(4, 20 , 'Back cover ripped out. Will sell for cheap', '0239482.jpg' , 9780323355636, 12345678);
+values(4, 20 , 'Back cover ripped out. Will sell for cheap', '0239482.jpg', 'N', 9780323355636, 12345678);
 
 insert into posting
-values(5, 20, 'Great conditions! Send me a message if interested!', 'IMG4.jpg', 9780262017350, 13579246);
+values(5, 20, 'Great conditions! Send me a message if interested!', 'IMG4.jpg', 'N', 9780262017350, 13579246);
 
 
 insert into sellers_sell_textbook
