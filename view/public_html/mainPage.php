@@ -13,7 +13,7 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
 
-  // preapre SQL statement for exection
+  // prepare SQL statement for execution
 $a = oci_parse($conn, 'SELECT * FROM Posting');
 if (!$a){
 	$e = oci_error($conn);
