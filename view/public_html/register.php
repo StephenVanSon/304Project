@@ -41,10 +41,7 @@
 <input type="email" id="email" name="email" class="form-control" placeholder="Email"><br>
 <button name='regBtn' id='regBtn' class="btn btn-lg btn-primary btn-block" type="submit"> Register! </button>
 </form>
-
-
 <?php
-
 if(isset($_POST['regBtn'])){
 $conn = oci_connect('ora_w5y9a', 'a20030145', 'ug');
 if (!$conn) {
@@ -61,7 +58,16 @@ oci_bind_by_name($stid, ":pw", $_POST["password"]);
 oci_bind_by_name($stid, ":uname", $_POST["uname"]);
 oci_execute($stid);
 
+
+
+$uName = $_POST["uname"];
+$studNum = $_POST["snum"];
+
+//cookies set to expire after one day
+setcookie("username", $uName, time() + (86400 * 30), "/"); 
+setcookie("studNum", $studNum,time() + (86400 * 30), "/");
 redirect('mainPage.php');
+
 }
 
 }
@@ -69,6 +75,7 @@ redirect('mainPage.php');
 function redirect($url, $statusCode = 303)
 {
    header('Location: ' . $url, true, $statusCode);
+   exit();
    die();
 }
 ?>
