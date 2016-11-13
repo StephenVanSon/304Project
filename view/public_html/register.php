@@ -39,11 +39,13 @@
 <input type="text" id="snum" name="snum" class="form-control" placeholder="UBC Student Number"><br>
 <label for="email" class="sr-only">Email address</label>
 <input type="email" id="email" name="email" class="form-control" placeholder="Email"><br>
-<button class="btn btn-lg btn-primary btn-block" type="submit"> Register! </button>
+<button name='regBtn' id='regBtn' class="btn btn-lg btn-primary btn-block" type="submit"> Register! </button>
 </form>
 
 
 <?php
+
+if(isset($_POST['regBtn'])){
 $conn = oci_connect('ora_w5y9a', 'a20030145', 'ug');
 if (!$conn) {
     $e = oci_error();
@@ -59,6 +61,15 @@ oci_bind_by_name($stid, ":pw", $_POST["password"]);
 oci_bind_by_name($stid, ":uname", $_POST["uname"]);
 oci_execute($stid);
 
+redirect('mainPage.php');
+}
+
+}
+
+function redirect($url, $statusCode = 303)
+{
+   header('Location: ' . $url, true, $statusCode);
+   die();
 }
 ?>
 
