@@ -14,7 +14,7 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
   // prepare SQL statement for execution
-$a = oci_parse($conn, 'SELECT t.title, p.ISBN, p.description, p.price, p.timePosted FROM Posting p, Textbooks t WHERE p.ISBN = t.ISBN');
+$a = oci_parse($conn, 'SELECT t.title, p.ISBN, p.description, p.price, p.timePosted, p.postId FROM Posting p, Textbooks t WHERE p.ISBN = t.ISBN');
 if (!$a){
 	$e = oci_error($conn);
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
@@ -28,7 +28,7 @@ if(!$b){
 // Fetch the results of the query
 
 print "<table border='1'>\n";
-$ncols = oci_num_fields($a);
+$ncols = oci_num_fields($a) - 1;
 	for ($i = 1; $i <= $ncols; $i++){
 		$column_name = oci_field_name($a, $i);
 		print "<th>". $column_name. "</th>";
@@ -37,7 +37,7 @@ $ncols = oci_num_fields($a);
 while($row = oci_fetch_array($a, OCI_ASSOC + OCI_RETURN_NULLS)){
 	print "<tr>\n";
 	#foreach($row as $item){
-		print "<td><a href='register.php?id=".$row['TITLE']."'>".$row['TITLE']."</a></td>";
+		print "<td><a href='indivPostingTemplate.php?id=".$row['POSTID']."'>".$row['TITLE']."</a></td>";
 		print "<td>".$row['ISBN']."</td>";
 		print "<td>".$row['DESCRIPTION']."</td>";
 		print "<td>".$row['PRICE']."</td>";
