@@ -3,10 +3,17 @@
 Welcome to Textbooks@UBC! </br>
 Please find below all the textbooks we currently have for sale. </br>
 Use a filter or the search textbox to narrow down your search.
+</p>
 
 <a href="Postings.php">Submit a new posting!</a>
 
+<p>
+<form action="search.php" method="get">
+<input type="text" name="search">
+<input type="submit" value="Search!">
+</form>
 </p>
+
 <?php
 $conn=oci_connect("ora_w5y9a", "a20030145", "ug");
 if (!$conn) {
@@ -14,7 +21,8 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
   // prepare SQL statement for execution
-$a = oci_parse($conn, 'SELECT t.title, p.ISBN, p.description, p.price, p.timePosted, p.postId FROM Posting p, Textbooks t WHERE p.ISBN = t.ISBN');
+$all_Entries = 'SELECT t.title, p.ISBN, p.description, p.price, p.timePosted, p.postId FROM Posting p, Textbooks t WHERE p.ISBN = t.ISBN';
+$a = oci_parse($conn, $all_Entries);
 if (!$a){
 	$e = oci_error($conn);
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
