@@ -36,9 +36,10 @@ $time = $info['TIMEPOSTED'];
 $email = $info['EMAIL'];
 $aname = $info['ANAME'];
 $snum = $info['STUDENTNUM'];
+$price = $info['PRICE'];
 #$image = $info['IMAGE'];
 
-print "<h1>" . $title . " by " . $aname . "</h1>\n";
+print "<h1>" . $title . " by " . $aname . " - $" . $price . "</h1>\n";
 print "<h1>" . $desc . "</h1>\n";
 print "<h2> Posted by: " . $uname . " on " . $time . "</h2>\n";
 print "<h2> Contact " . $email . " for more information </h2>\n";
@@ -46,9 +47,12 @@ print "<h2> Contact " . $email . " for more information </h2>\n";
 if ($snum == $_COOKIE[studNum]) {
 	#print "<button>Hello</button>";
 	print "<button id='editButton'>
-			Edit Description
-		   </button>
-		   <p id='editForm'></p>";
+			Edit Posting
+		   </button>";
+
+	print "<button id='deleteButton'>
+			Delete Posting
+		   </button>";
 
 }
 
@@ -57,21 +61,42 @@ oci_close($conn);
 ?>
 
 
-<div id="formToEdit"
-	<form action="edit.php" method="post">
-		<input type="text" name="new_description">
-		<input type="hidden" name='postID' value="'$retrieved_id'">
+<div id="formToEdit">
+	<form action="edit.php" method="get">
+		<input type="text" placeholder="Description" name="new_description">
+		<input type="number" placeholder="Price" name="new_p">
+		<input type="hidden" name='postID' value="<?php print $retrieved_id;?>">
 		<input type="submit" value="Submit Changes">
 	</form>
 </div>
+<div id="deletionsPrompt">
+	Are you sure?
+	<form action="delete.php" method="get">
+		<input type="submit" value="Yes">
+		<input type="hidden" name='postID' value="<?php print $retrieved_id;?>">
+	</form>
+	<button id="noButton">No</button>
+</div>
+
 
 <script src="jquery-3.0.0.js"></script>
 <script>
 $(function () {
 	$("#formToEdit").hide();
+	$("#deletionsPrompt").hide();
 
 	$("#editButton").click(function() {
+		$("#deletionsPrompt").hide();
 		$("#formToEdit").show();
+	})
+
+	$("#deleteButton").click(function() {
+		$("#formToEdit").hide();
+		$("#deletionsPrompt").show();
+	})
+
+	$("#noButton").click(function() {
+		$("#deletionsPrompt").hide();
 	})
 });
 </script>
