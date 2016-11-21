@@ -37,9 +37,10 @@
 				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
 				<ul class="nav navbar-nav">
 					<li><a href="mainPage.php">Main Page</a></li>
+					<li><a href='Postings.php'>New Posting</a></li>
 					<li><a href="login.php">Login</a></li>
 					<li class='active'><a href='register.php'>Register</a></li>
-					<li><a href='Postings.php'>New Posting</a></li>
+					
 				</ul>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
