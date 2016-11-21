@@ -1,6 +1,43 @@
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Search</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- Bootstrap core CSS -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="bootstrap.min.css">
+
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" href="main.css">
+
+
+</head>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<form class="navbar-form navbar-right" action="search.php" method="get">
+					<input type="text" class="form-control" name="search" placeholder="Search textbooks by...">
+				</form>
+			</div>
+		</nav>
+
 <p>
-Welcome to Textbooks@UBC! </br>
 Please find below all the textbooks we currently have for sale. </br>
 Use a filter or the search textbox to narrow down your search.
 </p>
@@ -41,7 +78,7 @@ if(!$b){
 }
 // Fetch the results of the query
 
-print "<table border='1'>\n";
+echo "<table class='table table-bordered'>\n";
 $ncols = oci_num_fields($a) - 1;
 	for ($i = 1; $i <= $ncols; $i++){
 		$column_name = oci_field_name($a, $i);
@@ -54,7 +91,7 @@ while($row = oci_fetch_array($a, OCI_ASSOC + OCI_RETURN_NULLS)){
 		print "<td><a href='indivPostingTemplate.php?id=".$row['POSTID']."'>".$row['TITLE']."</a></td>";
 		print "<td>".$row['ISBN']."</td>";
 		print "<td>".$row['DESCRIPTION']."</td>";
-		print "<td>".$row['PRICE']."</td>";
+		print "<td>"."$".$row['PRICE']."</td>";
 		print "<td>".$row['TIMEPOSTED']."</td>";
 		#print "<td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
 	print "</tr>\n";
