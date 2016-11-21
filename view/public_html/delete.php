@@ -1,3 +1,4 @@
+<html>
 <?php
 
 // Insert into several tables, rolling back the changes if an error occurs
@@ -33,7 +34,12 @@ if (!$r) {
     trigger_error(htmlentities($e['message']), E_USER_ERROR);
 }
 
-print "Successfully deleted!";
+print "<h1>Successfully deleted!</h1>";
 
 
 ?>
+<form action="mainPage.php">
+	<button type="submit">Go Back To Main Page</Button>
+</form>
+
+</html>
