@@ -28,7 +28,8 @@ if (!$conn) {
 $all_Entries = 'SELECT t.title, p.ISBN, p.description, p.price, p.timePosted, c.courseCode, c.courseNum, p.postId 
 				FROM Posting p, Textbooks t, Course_Of_Textbook c 
 				WHERE p.ISBN = t.ISBN 
-					AND t.ISBN = c.ISBN';
+					AND t.ISBN = c.ISBN
+				ORDER BY p.timePosted DESC';
 
 $a = oci_parse($conn, $all_Entries);
 if (!$a){
