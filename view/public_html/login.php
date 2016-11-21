@@ -22,6 +22,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+	<?php 
+	$uname = $_COOKIE["username"];
+	?>
+
   </head>
 
   <body>
@@ -34,13 +39,25 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
+				<?php 
+				if(empty($uname)){
+					print '<a class="navbar-brand" href="mainPage.php">Welcome to Textbooks @ UBC!</a>';
+				} else {
+					print '<a class="navbar-brand" href="mainPage.php">Hello ' . $uname . ', Welcome to Textbooks @ UBC!</a>';
+				}
+				?>
 				<ul class="nav navbar-nav">
-					<li><a href="mainPage.php">Main Page</a></li>
 					<li><a href='Postings.php'>New Posting</a></li>
-					<li class='active'><a href="login.php">Login</a></li>
-					<li><a href='register.php'>Register</a></li>
-					
+					<?php
+						if(empty($uname)){
+							echo "<li class='active'><a href='login.php'>Login</a></li>";
+							echo "<li><a href='register.php'>Register</a></li>";
+						}
+						else
+						{
+							echo "<li><a href='logout.php'>Logout</a></li>";
+						}
+					?>
 				</ul>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
