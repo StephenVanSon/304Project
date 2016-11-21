@@ -37,10 +37,8 @@
 			</div>
 		</nav>
 
-<p>
-Please find below all the textbooks we currently have for sale. </br>
-Use a filter or the search textbox to narrow down your search.
-</p>
+<h1 class="page-header">Check out the textbooks we currently have for sale!</h1>
+<h4>Use a filter or the search textbox to narrow down your search.</h4>
 
 <a href="Postings.php">Submit a new posting!</a>
 
