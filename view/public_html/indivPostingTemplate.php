@@ -79,22 +79,11 @@ $snum = $info['STUDENTNUM'];
 $price = $info['PRICE'];
 #$image = $info['IMAGE'];
 
-if ($snum == $_COOKIE[studNum]) {
-	#print "<button>Hello</button>";
-	print "<button id='editButton'>
-			Edit Posting
-		   </button>";
-
-	print "<button id='deleteButton'>
-			Delete Posting
-		   </button>";
-
-}
-
 oci_free_statement($stid);
 oci_close($conn);
 ?>
 
+<div class="col-sm-12">
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -116,6 +105,20 @@ oci_close($conn);
 		</tr>
 	</tbody>
 </table>
+<?php
+if ($snum == $_COOKIE[studNum]) {
+	#print "<button>Hello</button>";
+	print "<button id='editButton'>
+			Edit Posting
+		   </button>";
+
+	print "<button id='deleteButton'>
+			Delete Posting
+		   </button>";
+
+}
+?>
+</div>
 
 
 <div id="formToEdit">
