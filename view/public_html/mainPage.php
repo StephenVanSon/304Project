@@ -9,6 +9,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="sorttable.js"></script>
 
 	<!-- Bootstrap core CSS -->
 	<!-- Latest compiled and minified CSS -->
@@ -124,7 +125,7 @@
 					}
 					// Fetch the results of the query
 
-					echo "<table class='table table-bordered'>";
+					echo "<table class='sortable table table-bordered'>";
 					$ncols = oci_num_fields($a) - 2;
 					for ($i = 1; $i <= $ncols; $i++){
 						$column_name = oci_field_name($a, $i);
