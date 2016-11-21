@@ -30,7 +30,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
+				<a class="navbar-brand" href="mainPage.php">Welcome to Textbooks @ UBC!</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<form class="navbar-form navbar-right" action="search.php" method="get">
