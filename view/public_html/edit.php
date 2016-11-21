@@ -12,20 +12,17 @@ if (!$conn) {
 if(isset($_GET['postID'])) $currPID = $_GET['postID'];
 #$currPID = $_GET["postID"];
 
-$updateQuery = "UPDATE posting
-                SET description = :new_desc, price = :new_price
+$deleteQuery = "DELETE FROM posting
                 WHERE postID = '$currPID'";
 
 
-$parseIt = oci_parse($conn, $updateQuery);
-oci_bind_by_name($parseIt, ":new_desc", $_GET["new_description"]);
-oci_bind_by_name($parseIt, ":new_price", $_GET["new_p"]);
+$deleteIt = oci_parse($conn, $deleteQuery);
 
 // The OCI_NO_AUTO_COMMIT flag tells Oracle not to commit the INSERT immediately
 // Use OCI_DEFAULT as the flag for PHP <= 5.3.1.  The two flags are equivalent
-$r = oci_execute($parseIt, OCI_NO_AUTO_COMMIT);
+$r = oci_execute($deleteIt, OCI_NO_AUTO_COMMIT);
 if (!$r) {    
-   $e = oci_error($parseIt);
+   $e = oci_error($deleteIt);
     oci_rollback($conn);  // rollback changes to both tables
     trigger_error(htmlentities($e['message']), E_USER_ERROR);
 }
@@ -37,13 +34,12 @@ if (!$r) {
     trigger_error(htmlentities($e['message']), E_USER_ERROR);
 }
 
-print "<h1>Successfully updated!</h1>";
+print "<h1>Successfully deleted!</h1>";
 
 
 ?>
 <form action="mainPage.php">
 	<button type="submit">Go Back To Main Page</Button>
 </form>
-
 
 </html>
