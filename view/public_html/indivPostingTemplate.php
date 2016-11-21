@@ -118,8 +118,6 @@ if ($snum == $_COOKIE[studNum]) {
 
 }
 ?>
-</div>
-
 
 <div id="formToEdit">
 	<form action="edit.php" method="get">
@@ -137,6 +135,8 @@ if ($snum == $_COOKIE[studNum]) {
 	</form>
 	<button id="noButton">No</button>
 </div>
+</div>
+
 
 
 <script src="jquery-3.0.0.js"></script>
