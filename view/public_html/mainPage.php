@@ -36,14 +36,19 @@
 				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
 				<ul class="nav navbar-nav">
 					<li class='active'><a href="mainPage.php">Main Page</a></li>
+					<li><a href='Postings.php'>New Posting</a></li>
 					<?php
 						$uname = $_COOKIE["username"];
 						if(empty($uname)){
 							echo "<li><a href='login.php'>Login</a></li>";
 							echo "<li><a href='register.php'>Register</a></li>";
 						}
+						else
+						{
+							echo "<li><a href='logout.php'>Logout</a></li>";
+						}
 					?>
-					<li><a href='Postings.php'>New Posting</a></li>
+					
 				</ul>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
