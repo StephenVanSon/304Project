@@ -24,8 +24,44 @@
 
 
 </head>
+	
 <body>
-<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
+				<ul class="nav navbar-nav">
+					<li><a href="mainPage.php">Main Page</a></li>
+					<li class='active'><a href='Postings.php'>New Posting</a></li>
+					<?php
+						$uname = $_COOKIE["username"];
+						if(empty($uname)){
+							echo "<li><a href='login.php'>Login</a></li>";
+							echo "<li><a href='register.php'>Register</a></li>";
+						}
+						else
+						{
+							echo "<li><a href='logout.php'>Logout</a></li>";
+						}
+					?>
+					
+				</ul>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<form class="navbar-form navbar-right" action="search.php" method="get">
+					<input type="text" class="form-control" name="search" placeholder="Search textbooks by...">
+				</form>
+			</div>
+		</div>
+</nav>
+
+<div class="container" style='padding-top:70px'>
 <h2 class="form-signin-heading"> New Textbook Posting </h2>
 <form method="POST" action="Postings.php">
 <!--refresh page when submit-->
@@ -112,6 +148,11 @@
 		errorDiv.innerHTML = errorMessage;
 		errorDiv.removeAttribute('display');
 		errorDiv.setAttribute('display', 'block');
+	}
+	
+	function redirectToMainPage()
+	{
+		window.location = "mainPage.php";
 	}
  </script>
 </html>
@@ -220,7 +261,7 @@ else
 
 
 
-}
+
 $testTb = true;
 $testA = true;
 $testC = true;
@@ -364,9 +405,11 @@ if(!$b){
 }
 
 //redirect to mainpage
-echo "<script type='text/javascript'> console.log('redirecting...'); </script>";
-header('Location: mainPage.php', true, 303);
-exit();
-die();	
+// echo "<script type='text/javascript'> console.log('redirecting...'); </script>";
+// header('Location: mainPage.php', true, 303);
+// exit();
+// die();	
+echo "<script type='text/javascript'> redirectToMainPage();</script>";
+}
 }
 ?>

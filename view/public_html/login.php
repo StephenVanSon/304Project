@@ -25,8 +25,32 @@
   </head>
 
   <body>
-
-    <div class="container">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
+				<ul class="nav navbar-nav">
+					<li><a href="mainPage.php">Main Page</a></li>
+					<li><a href='Postings.php'>New Posting</a></li>
+					<li class='active'><a href="login.php">Login</a></li>
+					<li><a href='register.php'>Register</a></li>
+					
+				</ul>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<form class="navbar-form navbar-right" action="search.php" method="get">
+					<input type="text" class="form-control" name="search" placeholder="Search textbooks by...">
+				</form>
+			</div>
+		</div>
+	</nav>
+    <div class="container" style='padding-top:70px'>
 	
 	
 
