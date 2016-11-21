@@ -79,12 +79,6 @@ $snum = $info['STUDENTNUM'];
 $price = $info['PRICE'];
 #$image = $info['IMAGE'];
 
-print "<h1><strong>" . $title . " by " . $aname . "</strong></h1>\n";
-print "<h1>" . "Price: $" . $price . "</h1>\n";
-print "<h2>" . $desc . "</h2>\n";
-print "<p> Posted by: " . $uname . " on " . $time . "</p>\n";
-print "<p> Contact " . $email . " for more information </p>\n";
-
 if ($snum == $_COOKIE[studNum]) {
 	#print "<button>Hello</button>";
 	print "<button id='editButton'>
@@ -100,6 +94,28 @@ if ($snum == $_COOKIE[studNum]) {
 oci_free_statement($stid);
 oci_close($conn);
 ?>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th><?php echo "$title by $aname"?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php echo "Price: $$price"?></td>
+		</tr>
+		<tr>
+			<td><?php echo "Comments: $desc"?></td>
+		</tr>
+		<tr>
+			<td><?php echo "Posted by: $uname on $time"?></td>
+		</tr>
+		<tr>
+			<td><?php echo "Contact: <a href=$email>$email</a> for more information"?></td>
+		</tr>
+	</tbody>
+</table>
 
 
 <div id="formToEdit">
