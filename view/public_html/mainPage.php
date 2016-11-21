@@ -38,6 +38,7 @@
 					<li class='active'><a href="mainPage.php">Main Page</a></li>
 					<li><a href="login.php">Login</a></li>
 					<li><a href='register.php'>Register</a></li>
+					<li><a href='Postings.php'>New Posting</a></li>
 				</ul>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
