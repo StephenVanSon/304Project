@@ -113,6 +113,11 @@
 		errorDiv.removeAttribute('display');
 		errorDiv.setAttribute('display', 'block');
 	}
+	
+	function redirectToMainPage()
+	{
+		window.location = "mainPage.php";
+	}
  </script>
 </html>
 
@@ -364,9 +369,10 @@ if(!$b){
 }
 
 //redirect to mainpage
-echo "<script type='text/javascript'> console.log('redirecting...'); </script>";
-header('Location: mainPage.php', true, 303);
-exit();
-die();	
+// echo "<script type='text/javascript'> console.log('redirecting...'); </script>";
+// header('Location: mainPage.php', true, 303);
+// exit();
+// die();	
+echo "<script type='text/javascript'> redirectToMainPage();</script>";
 }
 ?>
