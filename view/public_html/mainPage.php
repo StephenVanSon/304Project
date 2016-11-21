@@ -21,7 +21,7 @@
 </head>
 <body>
 	<?php 
-	print "Hello " . ($_COOKIE['username']) . "<br>";
+	$uname = $_COOKIE["username"];
 	?>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
@@ -32,12 +32,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
+				<?php 
+				print '<a class="navbar-brand" href="mainPage.php">Hello ' . $uname . ', Welcome to Textbooks @ UBC!</a>';
+				?>
 				<ul class="nav navbar-nav">
-					<li class='active'><a href="mainPage.php">Main Page</a></li>
 					<li><a href='Postings.php'>New Posting</a></li>
 					<?php
-						$uname = $_COOKIE["username"];
 						if(empty($uname)){
 							echo "<li><a href='login.php'>Login</a></li>";
 							echo "<li><a href='register.php'>Register</a></li>";
@@ -118,7 +118,6 @@
 				WHERE p.ISBN = t.ISBN 
 				AND t.ISBN = c.ISBN
 				ORDER BY p.timePosted DESC';
-
 				$a = oci_parse($conn, $all_Entries);
 				if (!$a){
 					$e = oci_error($conn);
@@ -131,30 +130,25 @@
 					trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 				}
 					// Fetch the results of the query
-
 				echo "<table class='sortable table table-bordered'>";
 				$ncols = oci_num_fields($a) - 2;
 				for ($i = 1; $i <= $ncols; $i++){
 					$column_name = oci_field_name($a, $i);
 					print "<th>". $column_name. "</th>";
 				}
-
 				while($row = oci_fetch_array($a, OCI_ASSOC + OCI_RETURN_NULLS)){
 					print "<tr>\n";
 						#foreach($row as $item){
 					print "<td><a href='indivPostingTemplate.php?id=".$row['POSTID']."'>".$row['TITLE']."</a></td>";
 					print "<td>".$row['ISBN']."</td>";
 					print "<td>".$row['DESCRIPTION']."</td>";
-					print "<td>".$row['PRICE']."</td>";
+					print "<td>". "$". $row['PRICE']."</td>";
 					print "<td>".$row['TIMEPOSTED']."</td>";
 					print "<td>".$row['COURSECODE'] . " " . $row['COURSENUM'] . "</td>";
 						#print "<td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
 					print "</tr>\n";
 				}
 				print "</table>\n";
-
-
-
 				oci_free_statement($a);
 				oci_close($conn);
 				?>
