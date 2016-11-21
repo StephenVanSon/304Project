@@ -38,8 +38,13 @@
 				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
 				<ul class="nav navbar-nav">
 					<li><a href="mainPage.php">Main Page</a></li>
-					<li><a href="login.php">Login</a></li>
-					<li><a href='register.php'>Register</a></li>
+					<?php
+						$uname = $_COOKIE["username"];
+						if(empty($uname)){
+							echo "<li><a href='login.php'>Login</a></li>";
+							echo "<li><a href='register.php'>Register</a></li>";
+						}
+					?>
 					<li class='active'><a href='Postings.php'>New Posting</a></li>
 				</ul>
 			</div>
@@ -251,7 +256,7 @@ else
 
 
 
-}
+
 $testTb = true;
 $testA = true;
 $testC = true;
@@ -400,5 +405,6 @@ if(!$b){
 // exit();
 // die();	
 echo "<script type='text/javascript'> redirectToMainPage();</script>";
+}
 }
 ?>

@@ -32,17 +32,25 @@
 				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
 				<ul class="nav navbar-nav">
 					<li><a href="mainPage.php">Main Page</a></li>
-					<li><a href="login.php">Login</a></li>
-					<li><a href='register.php'>Register</a></li>
+					<?php
+						$uname = $_COOKIE["username"];
+						if(empty($uname)){
+							echo "<li><a href='login.php'>Login</a></li>";
+							echo "<li><a href='register.php'>Register</a></li>";
+						}
+					?>
 					<li><a href='Postings.php'>New Posting</a></li>
 				</ul>
 			</div>
+		
+			
 			<div id="navbar" class="navbar-collapse collapse">
 				<form class="navbar-form navbar-right" action="search.php" method="get">
 					<input type="text" class="form-control" name="search" placeholder="Search textbooks by...">
 				</form>
 			</div>
-		</nav>
+		</div>
+	</nav>
 
 <div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main" style='padding-top:70px'>
 <h1 class="page-header">Check out the textbooks we currently have for sale!</h1>
