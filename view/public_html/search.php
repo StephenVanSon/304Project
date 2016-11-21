@@ -9,6 +9,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="sorttable.js"></script>
 
 	<!-- Bootstrap core CSS -->
 	<!-- Latest compiled and minified CSS -->
@@ -19,7 +20,7 @@
 
 
 </head>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -29,6 +30,12 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
+				<ul class="nav navbar-nav">
+					<li><a href="mainPage.php">Main Page</a></li>
+					<li><a href="login.php">Login</a></li>
+					<li><a href='register.php'>Register</a></li>
+					<li><a href='Postings.php'>New Posting</a></li>
+				</ul>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<form class="navbar-form navbar-right" action="search.php" method="get">
@@ -37,8 +44,10 @@
 			</div>
 		</nav>
 
+<div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main" style='padding-top:70px'>
 <h1 class="page-header">Check out the textbooks we currently have for sale!</h1>
 <h4>Use a filter or the search textbox to narrow down your search.</h4>
+
 
 <a href="Postings.php">Submit a new posting!</a>
 
@@ -76,7 +85,7 @@ if(!$b){
 }
 // Fetch the results of the query
 
-echo "<table class='table table-bordered'>\n";
+echo "<table class='sortable table table-bordered'>\n";
 $ncols = oci_num_fields($a) - 2;
 	for ($i = 1; $i <= $ncols; $i++){
 		$column_name = oci_field_name($a, $i);
@@ -99,7 +108,8 @@ print "</table>\n";
 
 
 
-oci_free_statement($stid);
+
 oci_close($conn);
 ?>
+</div>
 </html>
