@@ -62,7 +62,7 @@ if (!$conn) {
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }
   // prepare SQL statement for execution
-$filtered_Entries = "SELECT t.title, p.ISBN, p.description, p.price, p.timePosted, p.postId FROM Posting p, Textbooks t WHERE p.ISBN = t.ISBN AND t.title LIKE '%$search_entry%'";
+$filtered_Entries = "SELECT t.title, p.ISBN, p.description, p.price, p.timePosted, p.postId, c.courseCode, c.courseNum FROM Posting p, Textbooks t, course_of_textbook c WHERE c.ISBN = p.ISBN AND p.ISBN = t.ISBN AND (t.title LIKE '%$search_entry%' OR p.ISBN LIKE '$search_entry' OR c.courseCode LIKE '$search_entry')";
 $a = oci_parse($conn, $filtered_Entries);
 if (!$a){
 	$e = oci_error($conn);
