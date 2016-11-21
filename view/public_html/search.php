@@ -48,19 +48,6 @@
 <h1 class="page-header">Check out the textbooks we currently have for sale!</h1>
 <h4>Use a filter or the search textbox to narrow down your search.</h4>
 
-
-<a href="Postings.php">Submit a new posting!</a>
-
-<p>
-<form action="search.php" method="get">
-<input type="text" name="search">
-<input type="submit" value="Search!">
-</form>
-<form action="mainPage.php">
-<input type="submit" value="Reset" />
-</form>
-</p>
-
 <?php
 $search_entry = $_GET["search"];
 print "Your search entry is: " . $search_entry;
