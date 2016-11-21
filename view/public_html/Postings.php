@@ -76,7 +76,7 @@ while($row = oci_fetch_array($checkBook, OCI_ASSOC + OCI_RETURN_NULLS))
 }
 
 oci_free_statement($checkBook);
-//if book doesn't exist AND they havent entered a title dynamically insert inputs for book info
+//if book doesn't exist AND they haven't entered a title dynamically insert inputs for book info
 if(!$bookExists and !isset($_POST['tTitle']))
 {
 	$isbn = $_POST["tISBN"];
