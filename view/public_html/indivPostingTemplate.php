@@ -1,4 +1,43 @@
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Posting</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- Bootstrap core CSS -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="posting.css">
+
+
+	<!-- Custom styles for this template -->
+	<!--<link rel="stylesheet" href="main.css">-->
+
+
+</head>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<form class="navbar-form navbar-right" action="search.php" method="get">
+					<input type="text" class="form-control" name="search" placeholder="Search textbooks by...">
+				</form>
+			</div>
+		</nav>
 
 <?php
 $retrieved_id = $_GET['id'];
@@ -33,16 +72,18 @@ $title = $info['TITLE'];
 $desc = $info['DESCRIPTION'];
 $uname = $info['UNAME'];
 $time = $info['TIMEPOSTED'];
+$formatTime = date_format($time, 'g:ia \o\n l jS F Y');
 $email = $info['EMAIL'];
 $aname = $info['ANAME'];
 $snum = $info['STUDENTNUM'];
 $price = $info['PRICE'];
 #$image = $info['IMAGE'];
 
-print "<h1>" . $title . " by " . $aname . " - $" . $price . "</h1>\n";
-print "<h1>" . $desc . "</h1>\n";
-print "<h2> Posted by: " . $uname . " on " . $time . "</h2>\n";
-print "<h2> Contact " . $email . " for more information </h2>\n";
+print "<h1><strong>" . $title . " by " . $aname . "</strong></h1>\n";
+print "<h1>" . "Price: $" . $price . "</h1>\n";
+print "<h2>" . $desc . "</h2>\n";
+print "<p> Posted by: " . $uname . " on " . $time . "</p>\n";
+print "<p> Contact " . $email . " for more information </p>\n";
 
 if ($snum == $_COOKIE[studNum]) {
 	#print "<button>Hello</button>";
