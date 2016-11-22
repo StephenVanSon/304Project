@@ -106,13 +106,15 @@
 				}
 				$result= $_POST['radio'];
 				$group = $result[0];
-				echo "Group is".$group;
+				echo "Group is ". $group . "\n";
 				
   					// prepare SQL statement for execution
+
 				$a = oci_parse($conn, 'SELECT :grouping, COUNT(*), avg(p.PRICE), MAX(p.PRICE), MIN(p.PRICE)
 										FROM Posting p, Course_Of_Textbook c 
 										WHERE p.ISBN = c.ISBN 
 										GROUP BY :grouping');
+
 				oci_bind_by_name($a, ":grouping", $group);
 				if (!$a){
 					$e = oci_error($conn);
@@ -126,7 +128,7 @@
 				}
 					// Fetch the results of the query
 				echo "<table class='sortable table table-bordered'>";
-				$ncols = oci_num_fields($a) - 2;
+				$ncols = oci_num_fields($a);
 				for ($i = 1; $i <= $ncols; $i++){
 					$column_name = oci_field_name($a, $i);
 					print "<th>". $column_name. "</th>";
