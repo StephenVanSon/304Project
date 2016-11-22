@@ -105,16 +105,36 @@
 					trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 				}
 				$result= $_POST['radio'];
-				echo "Result is ". $result;
+				$group = $result[0];
+				echo "Group is ". $group . "\n";
 				
   					// prepare SQL statement for execution
+				// $a = oci_parse($conn, 'SELECT :grouping AS "GROUPING", COUNT(*) AS "COUNT", AVG(p.PRICE) AS "AVG", MAX(p.PRICE) AS "MAX", MIN(p.PRICE) AS "MIN"
+				// 						FROM Posting p, Course_Of_Textbook c 
+				// 						WHERE p.ISBN = c.ISBN 
+				// 						GROUP BY :grouping');
 
-				$a = oci_parse($conn, 'SELECT :grouping AS "GROUPING", COUNT(*) AS "COUNT", AVG(p.PRICE) AS "AVG", MAX(p.PRICE) AS "MAX", MIN(p.PRICE) AS "MIN"
+				
+				$temp = c.courseCode;
+				if ($group == "Course"){
+					$temp = c.courseCode;
+				} else if ($group == "Dept"){
+					$temp = c.Dept;
+				} else if ($group == "StudNum"){
+					$temp = p.StudNum;
+				}
+				
+				$a = oci_parse($conn, 'SELECT c.courseCode AS "GROUPING", COUNT(*) AS "COUNT", AVG(p.PRICE) AS "AVG", MAX(p.PRICE) AS "MAX", MIN(p.PRICE) AS "MIN"
 										FROM Posting p, Course_Of_Textbook c 
 										WHERE p.ISBN = c.ISBN 
-										GROUP BY :grouping');
+										GROUP BY c.courseCode');
 
-				oci_bind_by_name($a, ":grouping", $result);
+
+
+				oci_bind_by_name($a, ":grouping", $group);
+
+
+
 				if (!$a){
 					$e = oci_error($conn);
 					trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
