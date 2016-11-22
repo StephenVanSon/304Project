@@ -33,7 +33,11 @@
 					<span class="icon-bar"></span>
 				</button>
 				<?php 
-				print '<a class="navbar-brand" href="mainPage.php">Hello ' . $uname . ', Welcome to Textbooks @ UBC!</a>';
+				if(empty($uname)){
+					print '<a class="navbar-brand" href="mainPage.php">Welcome to Textbooks @ UBC!</a>';
+				} else {
+					print '<a class="navbar-brand" href="mainPage.php">Hello ' . $uname . ', Welcome to Textbooks @ UBC!</a>';
+				}
 				?>
 				<ul class="nav navbar-nav">
 					<li><a href='Postings.php'>New Posting</a></li>
