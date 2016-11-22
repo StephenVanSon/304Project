@@ -105,8 +105,7 @@
 					trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 				}
 				$result= $_POST['radio'];
-				$group = $result[0];
-				echo "Group is ". $group . "\n";
+				echo "Result is ". $result;
 				
   					// prepare SQL statement for execution
 
@@ -115,7 +114,7 @@
 										WHERE p.ISBN = c.ISBN 
 										GROUP BY :grouping');
 
-				oci_bind_by_name($a, ":grouping", $group);
+				oci_bind_by_name($a, ":grouping", $result);
 				if (!$a){
 					$e = oci_error($conn);
 					trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
