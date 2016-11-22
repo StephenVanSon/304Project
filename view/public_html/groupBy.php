@@ -142,7 +142,11 @@
 
 
 
-				oci_bind_by_name($a, ":grouping", $group);
+				if($group == "Course")
+					$a = $c;
+				else if($group == "Dept")
+					$a = $b;
+				
 
 
 
@@ -151,7 +155,9 @@
 					trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 				}
 					// Perform logic of the query
+				
 				$b = oci_execute($a);
+				
 				if(!$b){
 					$e = oci_error($a);
 					trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);

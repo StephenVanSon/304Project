@@ -75,13 +75,13 @@
 								<div class="panel-body">
 									<form method="post" action="groupBy.php">
 										<div class="radio">
-											<label><input type="radio" name="radio" value="c.courseCode, c.courseNum">Course</label>
+											<label><input type="radio" name="radio[]" value="Course">Course</label>
 										</div>
 										<div class="radio">
-											<label><input type="radio" name="radio" value="c.courseCode">Department</label>
+											<label><input type="radio" name="radio[]" value="Dept">Department</label>
 										</div>
 										<div class="radio">
-											<label><input type="radio" name="radio" value="p.studentNum">Seller Student Number</label>
+											<label><input type="radio" name="radio[]" value="StudNum">Seller Student Number</label>
 										</div>
 									<button type="submit" name="submit" class="btn btn-primary btn-sm">Submit</button>
 								</form>
