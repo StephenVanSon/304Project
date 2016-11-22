@@ -110,7 +110,7 @@
 				
   					// prepare SQL statement for execution
 
-				$a = oci_parse($conn, 'SELECT :grouping, COUNT(*), avg(p.PRICE), MAX(p.PRICE), MIN(p.PRICE)
+				$a = oci_parse($conn, 'SELECT :grouping AS "GROUPING", COUNT(*) AS "COUNT", AVG(p.PRICE) AS "AVG", MAX(p.PRICE) AS "MAX", MIN(p.PRICE) AS "MIN"
 										FROM Posting p, Course_Of_Textbook c 
 										WHERE p.ISBN = c.ISBN 
 										GROUP BY :grouping');
@@ -135,14 +135,11 @@
 				}
 				while($row = oci_fetch_array($a, OCI_ASSOC + OCI_RETURN_NULLS)){
 					print "<tr>\n";
-						#foreach($row as $item){
-					print "<td><a href='indivPostingTemplate.php?id=".$row['POSTID']."'>".$row['TITLE']."</a></td>";
-					print "<td>".$row['ISBN']."</td>";
-					print "<td>".$row['DESCRIPTION']."</td>";
-					print "<td>".$row['PRICE']."</td>";
-					print "<td>".$row['TIMEPOSTED']."</td>";
-					print "<td>".$row['COURSECODE'] . " " . $row['COURSENUM'] . "</td>";
-						#print "<td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
+						print "<td>".$row['GROUPING']."</td>";
+						print "<td>".$row['COUNT']."</td>";
+						print "<td>".$row['AVG']."</td>";
+						print "<td>".$row['MAX']."</td>";
+						print "<td>".$row['MIN']."</td>";
 					print "</tr>\n";
 				}
 				print "</table>\n";
