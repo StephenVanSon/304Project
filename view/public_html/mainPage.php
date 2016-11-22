@@ -20,9 +20,6 @@
 
 </head>
 <body>
-	<?php 
-	print "Hello " . ($_COOKIE['username']) . "<br>";
-	?>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -32,7 +29,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Welcome to Textbooks @ UBC!</a>
+				<?php 
+				print '<a class="navbar-brand" href="mainPage.php">Hello ' . $uname . ', Welcome to Textbooks @ UBC!</a>';
+				?>
 				<ul class="nav navbar-nav">
 					<li class='active'><a href="mainPage.php">Main Page</a></li>
 					<li><a href='Postings.php'>New Posting</a></li>
