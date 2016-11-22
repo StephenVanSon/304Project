@@ -125,7 +125,7 @@
 				// }
 				// echo "$temp";
 				
-				$a = oci_parse($conn, 'SELECT c.courseCode AS "GROUPING", COUNT(*) AS "COUNT", AVG(p.PRICE) AS "AVG", MAX(p.PRICE) AS "MAX", MIN(p.PRICE) AS "MIN"
+				$c = oci_parse($conn, 'SELECT c.courseCode AS "GROUPING", COUNT(*) AS "COUNT", AVG(p.PRICE) AS "AVG", MAX(p.PRICE) AS "MAX", MIN(p.PRICE) AS "MIN"
 										FROM Posting p, Course_Of_Textbook c 
 										WHERE p.ISBN = c.ISBN 
 										GROUP BY c.courseCode, c.courseNum');
@@ -135,7 +135,7 @@
 										WHERE p.ISBN = c.ISBN 
 										GROUP BY c.courseCode');
 
-				$c = oci_parse($conn, 'SELECT p.StudentNum AS "GROUPING", COUNT(*) AS "COUNT", AVG(p.PRICE) AS "AVG", MAX(p.PRICE) AS "MAX", MIN(p.PRICE) AS "MIN"
+				$a = oci_parse($conn, 'SELECT p.StudentNum AS "GROUPING", COUNT(*) AS "COUNT", AVG(p.PRICE) AS "AVG", MAX(p.PRICE) AS "MAX", MIN(p.PRICE) AS "MIN"
 										FROM Posting p, Course_Of_Textbook c 
 										WHERE p.ISBN = c.ISBN 
 										GROUP BY p.StudentNum');
