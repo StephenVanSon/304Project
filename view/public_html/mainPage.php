@@ -74,21 +74,14 @@
 								<div class="panel-body">
 									<form method="post" action="groupBy.php">
 										<div class="radio">
-											<label><input type="radio" name="radio[]" value="c.courseCode, c.courseNum">Course</label>
+											<label><input type="radio" name="radio" value="c.courseCode, c.courseNum">Course</label>
 										</div>
 										<div class="radio">
-											<label><input type="radio" name="radio[]" value="c.courseCode">Department</label>
+											<label><input type="radio" name="radio" value="c.courseCode">Department</label>
 										</div>
 										<div class="radio">
-											<label><input type="radio" name="radio[]" value="p.studentNum">Seller Student Number</label>
+											<label><input type="radio" name="radio" value="p.studentNum">Seller Student Number</label>
 										</div>
-										<div class="checkbox">
-										</br><h4 class="panel-title">Calculate:</h4></br>
-										<label><input type="checkbox" name="radio[]" value="COUNT(*)">Number of textbooks being sold</br></label>
-										<label><input type="checkbox" name="radio[]" value="AVG(p.price)">Average price of textbooks</br></label>
-										<label><input type="checkbox" name="radio[]" value="MAX(p.price)">Most expensive textbook</br></label>
-										<label><input type="checkbox" name="radio[]" value="MIN(p.price)">Cheapest textbook</br></label></br></br>
-									</div>
 									<button type="submit" name="submit" class="btn btn-primary btn-sm">Submit</button>
 								</form>
 							</div>
