@@ -18,6 +18,9 @@
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" href="main.css">
 
+	<?php 
+	$uname = $_COOKIE["username"];
+	?>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
