@@ -268,7 +268,7 @@ else {
 
 
 
-}
+
 $testTb = true;
 $testA = true;
 $testC = true;
@@ -416,6 +416,7 @@ if(!$b){
 // header('Location: mainPage.php', true, 303);
 // exit();
 // die();	
-echo "<script type='text/javascript'> redirectToMainPage();</script>";
+	echo "<script type='text/javascript'> redirectToMainPage();</script>";
+}
 }
 ?>
