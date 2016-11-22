@@ -36,7 +36,6 @@
 				print '<a class="navbar-brand" href="mainPage.php">Hello ' . $uname . ', Welcome to Textbooks @ UBC!</a>';
 				?>
 				<ul class="nav navbar-nav">
-					<li class='active'><a href="mainPage.php">Main Page</a></li>
 					<li><a href='Postings.php'>New Posting</a></li>
 					<?php
 					$uname = $_COOKIE["username"];
