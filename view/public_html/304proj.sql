@@ -115,23 +115,23 @@ values(90863758);
 
 
 insert into textbooks
-values(9780072465631, 'http://pages.cs.wisc.edu/~dbbook/images/book3ed.jpg', 'Database Management Systems 3/E');
+values(9780072465631, 'Database Management Systems 3/E');
 
 
 insert into textbooks
-values(9780262017350, 'https://shop.bookstore.ubc.ca/images/Product/icon/57440.jpg', 'Foundations of 3D Computer Graphics');
+values(9780262017350, 'Foundations of 3D Computer Graphics');
 
 
 insert into textbooks
-values(9780133571769, 'https://shop.bookstore.ubc.ca/images/Product/icon/61644.jpg', 'Strategic Staffing 3/E');
+values(9780133571769, 'Strategic Staffing 3/E');
 
 
 insert into textbooks
-values(9780323355636, 'https://shop.bookstore.ubc.ca/images/Product/icon/85877.jpg', 'Textbook of Histology');
+values(9780323355636,'Textbook of Histology');
 
 
 insert into textbooks
-values(9780321776419, 'https://shop.bookstore.ubc.ca/images/Product/icon/74836.jpg', 'Progamming in C');
+values(9780321776419, 'Progamming in C');
 
 
 insert into course
